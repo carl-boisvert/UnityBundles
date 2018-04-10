@@ -6,13 +6,16 @@ public class InventoryController : MonoBehaviour
 {
     [SerializeField]
     private Canvas canvas;
+    private InventoryCaseController[] cases;
     private List<Item> items;
+    
 
 
     // Use this for initialization
     void Start()
     {
         items = new List<Item>();
+        cases = gameObject.GetComponentsInChildren<InventoryCaseController>();
     }
 
 	private void OnEnable()
@@ -45,6 +48,7 @@ public class InventoryController : MonoBehaviour
         {
             Debug.Log(item.name);
         }
+        cases[items.Count-1].Item = item;
     }
 
     void ShowInventory()
