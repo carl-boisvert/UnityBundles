@@ -49,6 +49,7 @@ public class InventoryController : MonoBehaviour
             Debug.Log(item.name);
         }
         cases[items.Count-1].Item = item;
+        cases[items.Count - 1].updateView();
     }
 
     void ShowInventory()

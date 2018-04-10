@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
 
-public class InventoryCaseController : MonoBehaviour {
+public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
 
     [SerializeField]
     private RawImage icon;
@@ -24,18 +27,31 @@ public class InventoryCaseController : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
-    void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(item != null)
+    public void updateView()
+    {
+        icon.texture = item.Icon;
+        icon.color = Color.white;
+        border.color = item.Rarity.Material.color;
+    }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("Hover on " + item.name + " item");
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null)
         {
-            icon.texture = item.Icon;
-            icon.color = Color.white;
+            border.color = Color.white;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (item != null)
+        {
             border.color = item.Rarity.Material.color;
         }
-	}
+    }
 }
