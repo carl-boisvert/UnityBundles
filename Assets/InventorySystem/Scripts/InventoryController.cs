@@ -6,8 +6,11 @@ public class InventoryController : MonoBehaviour
 {
     [SerializeField]
     private Canvas canvas;
+    [SerializeField]
+    private GameObject spawnWeapon;
     private InventoryCaseController[] cases;
     private List<Item> items;
+
     
 
 
@@ -21,11 +24,13 @@ public class InventoryController : MonoBehaviour
 	private void OnEnable()
 	{
         EventDelegate.ItemPickUp += AddItem;
+        EventDelegate.ItemClicked += EquipItem;
 	}
 
 	private void OnDisable()
 	{
         EventDelegate.ItemPickUp -= AddItem;
+        EventDelegate.ItemClicked -= EquipItem;
 	}
 
 	// Update is called once per frame
@@ -50,6 +55,13 @@ public class InventoryController : MonoBehaviour
         }
         cases[items.Count-1].Item = item;
         cases[items.Count - 1].updateView();
+    }
+
+    void EquipItem(Item item)
+    {
+        Debug.Log("Equip " + item.Name);
+        spawnWeapon.AddComponent<MeshFilter>().sharedMesh = item.ItemMesh;
+        spawnWeapon.AddComponent<MeshRenderer>().material = item.Rarity.Material;
     }
 
     void ShowInventory()

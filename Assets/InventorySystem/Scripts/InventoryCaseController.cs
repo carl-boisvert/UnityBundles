@@ -5,7 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public partial class EventDelegate
+{
+    public delegate void OnItemClickedHandler(Item item);
+    public static event OnItemClickedHandler ItemClicked;
+    public static void OnItemClicked(Item item)
+    {
+        if(ItemClicked != null)
+        {
+            ItemClicked(item);
+        }
+    }
+}
+
+public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
     [SerializeField]
@@ -53,5 +66,10 @@ public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPoi
         {
             border.color = item.Rarity.Material.color;
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        EventDelegate.OnItemClicked(item);
     }
 }
