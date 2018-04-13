@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Rat", menuName = "Monsters/Rat", order = 2)]
+[CreateAssetMenu(fileName = "Rat", menuName = "Enemy/Rat", order = 1)]
 public class Rat : Enemy {
 
     private void Attack()

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff253391f0784d489f31a2d505dff96, type: 3}
+  m_Name: Bear
+  m_EditorClassIdentifier: 
+  name: Bear
+  xp: 20
+  attack: 5
+  speed: 15
+  stamina: 10
+  health: 15
+  animatorController: {fileID: 22100000, guid: 00fd9b19192894940ae2d48bfe59a062, type: 2}
+  prefab: {fileID: 1052791461614782, guid: f87a1ea43c1520d4e938ead1e1ec236c, type: 2}

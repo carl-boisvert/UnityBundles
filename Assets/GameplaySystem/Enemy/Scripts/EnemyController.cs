@@ -20,14 +20,30 @@ public class EnemyController : MonoBehaviour {
 
     [SerializeField]
     private Enemy enemy;
+    [SerializeField]
+    private GameObject modelRoot;
     private float lastAttack;
-    private Animator animator;    
+    private Animator animator;
 
-	// Use this for initialization
-	void Start () {
+    public Enemy Enemy
+    {
+        get
+        {
+            return enemy;
+        }
+
+        set
+        {
+            enemy = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         lastAttack = 0;
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = enemy.AnimatorController;
+        Instantiate(enemy.Prefab, modelRoot.transform);
     }
 	
 	// Update is called once per frame
