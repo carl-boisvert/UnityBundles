@@ -8,6 +8,7 @@ public class InventoryController : MonoBehaviour
     private Canvas canvas;
     [SerializeField]
     private GameObject spawnWeapon;
+    [SerializeField]
     private InventoryCaseController[] cases;
     private List<Item> items;
 

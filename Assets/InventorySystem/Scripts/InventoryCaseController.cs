@@ -26,6 +26,7 @@ public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPoi
     [SerializeField]
     private RawImage border;
     private Item item = null;
+    private bool equiped = false;
 
     public Item Item
     {
@@ -54,7 +55,7 @@ public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (item != null)
+        if (item != null && !equiped)
         {
             border.color = Color.white;
         }
@@ -62,7 +63,7 @@ public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (item != null)
+        if (item != null && !equiped)
         {
             border.color = item.Rarity.Material.color;
         }
@@ -70,6 +71,11 @@ public class InventoryCaseController : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        EventDelegate.OnItemClicked(item);
+        if (item != null && !equiped)
+        {
+            equiped = true;
+            border.color = Color.white;
+            EventDelegate.OnItemClicked(item);
+        }
     }
 }
