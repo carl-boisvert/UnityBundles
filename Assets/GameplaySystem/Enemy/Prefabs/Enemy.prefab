@@ -38,7 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4585580566300590}
   - component: {fileID: 95570283214925848}
-  - component: {fileID: 114769903466405362}
+  - component: {fileID: 114052670353471272}
+  - component: {fileID: 114092153111929778}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -143,7 +144,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114769903466405362
+--- !u!114 &114052670353471272
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -151,8 +152,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1905045775777478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51524bc59ab96c479af8d4ec1ddf7e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e549561908bb9e409ef9a07e194ba22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 11400000, guid: dd52a040930f29a40858d61edaac8849, type: 2}
   modelRoot: {fileID: 1426366952182760}
+--- !u!114 &114092153111929778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905045775777478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d152337ac249f144f8706a27782b7861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Items/Armor", order = 2)]
-public class Armor : Equipement {
+namespace Snappydue.UnityBundle
+{
+    [CreateAssetMenu(fileName = "Item", menuName = "Items/Armor", order = 2)]
+    public class Armor : Equipement
+    {
 
-    [SerializeField]
-    private int defence;
+        [SerializeField]
+        private int defence;
+    }
 }

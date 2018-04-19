@@ -11,11 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3c6f280a5c0f14d9bca761972322d9, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: 
-  name: Basic Rat
+  enemyName: 
   xp: 10
   attack: 1
   speed: 20
   stamina: 10
   health: 10
+  attackList:
+  - {fileID: 11400000, guid: 78ce0ce5d24ee9e4f91ff05742af19cd, type: 2}
   animatorController: {fileID: 22100000, guid: 390a82c5b22b4c4499032a3de6250499, type: 2}
   prefab: {fileID: 1116201724273134, guid: 2abc987989c54ae4aa2d5e4d0a8e4a73, type: 2}

@@ -1,29 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-[CreateAssetMenu(fileName = "Rarity", menuName = "Rarity")]
-public class Rarity : ScriptableObject {
-
-    [SerializeField]
-    private string name;
-
-    [SerializeField]
-    private Material material;
-
-    public string Name
+namespace Snappydue.UnityBundle
+{
+    [CreateAssetMenu(fileName = "Rarity", menuName = "Rarity")]
+    public class Rarity : ScriptableObject
     {
-        get
+
+        [SerializeField]
+        private string rarityName;
+
+        [SerializeField]
+        private Material material;
+
+        public string Name
         {
-            return name;
+            get
+            {
+                return rarityName;
+            }
         }
-    }
 
-    public Material Material
-    {
-        get
+        public Material Material
         {
-            return material;
+            get
+            {
+                return material;
+            }
         }
     }
 }

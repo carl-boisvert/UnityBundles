@@ -11,11 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff253391f0784d489f31a2d505dff96, type: 3}
   m_Name: Bear
   m_EditorClassIdentifier: 
-  name: Bear
+  enemyName: 
   xp: 20
   attack: 5
   speed: 15
   stamina: 10
   health: 15
+  attackList:
+  - {fileID: 11400000, guid: 52df7324c7fe2604382ce73ad35bd213, type: 2}
   animatorController: {fileID: 22100000, guid: 00fd9b19192894940ae2d48bfe59a062, type: 2}
   prefab: {fileID: 1052791461614782, guid: f87a1ea43c1520d4e938ead1e1ec236c, type: 2}

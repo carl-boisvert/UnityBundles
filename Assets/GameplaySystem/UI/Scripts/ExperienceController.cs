@@ -2,36 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Snappydue.UnityBundle;
 
-public static partial class EventDelegate
+namespace Snappydue.UnityBundle
 {
-    public delegate void ExperienceHandler(int exp);
-    public static event ExperienceHandler ExperienceEvent;
-    public static void OnExperienceEvent(int exp)
+    public static partial class EventDelegate
     {
-        if (ExperienceEvent != null)
+        public delegate void ExperienceHandler(int exp);
+        public static event ExperienceHandler ExperienceEvent;
+        public static void OnExperienceEvent(int exp)
         {
-            ExperienceEvent(exp);
+            if (ExperienceEvent != null)
+            {
+                ExperienceEvent(exp);
+            }
         }
     }
-}
-public class ExperienceController : MonoBehaviour {
-
-    [SerializeField]
-    private Image radial;
-
-    private void OnEnable()
+    public class ExperienceController : MonoBehaviour
     {
-        EventDelegate.ExperienceEvent += OnExperienceEvent;
-    }
 
-    private void OnDisable()
-    {
-        EventDelegate.ExperienceEvent -= OnExperienceEvent;
-    }
+        [SerializeField]
+        private Image radial;
+        [SerializeField]
+        private ExperienceConfig xpConfig;
+        [SerializeField]
+        private int level;
 
-    private void OnExperienceEvent(int exp)
-    {
-        radial.fillAmount = 0.5f;
+        private void OnEnable()
+        {
+            EventDelegate.ExperienceEvent += OnExperienceEvent;
+        }
+
+        private void OnDisable()
+        {
+            EventDelegate.ExperienceEvent -= OnExperienceEvent;
+        }
+
+        private void OnExperienceEvent(int exp)
+        {
+            int xpMax = xpConfig.levels[level - 1].xp;
+            float percent = (radial.fillAmount * xpMax) / xpMax;
+            Debug.Log(percent);
+            //radial.fillAmount = 0.5f;
+        }
     }
 }

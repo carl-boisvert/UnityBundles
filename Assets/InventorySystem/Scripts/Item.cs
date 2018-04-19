@@ -1,95 +1,99 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-public class Item : ScriptableObject
+namespace Snappydue.UnityBundle
 {
-
-    [SerializeField]
-    private string name;
-
-    [SerializeField]
-    private Texture2D icon;
-
-    [SerializeField]
-    private Mesh itemMesh;
-
-    [SerializeField]
-    private int cost;
-
-    [SerializeField]
-    private int value;
-
-    [SerializeField]
-    private List<Item> ingredients;
-
-    [SerializeField]
-    private float weight;
-
-    [SerializeField]
-    private Rarity rarity;
-
-    public string Name
+    public class Item : ScriptableObject
     {
-        get
+
+        [SerializeField]
+        private string itemName;
+
+        [SerializeField]
+        private Texture2D icon;
+
+        [SerializeField]
+        private Mesh itemMesh;
+
+        [SerializeField]
+        private int cost;
+
+        [SerializeField]
+        private int value;
+
+        [SerializeField]
+        private List<Item> ingredients;
+
+        [SerializeField]
+        private float weight;
+
+        [SerializeField]
+        private Rarity rarity;
+
+        public string Name
         {
-            return name;
+            get
+            {
+                return name;
+            }
         }
-    }
 
-    public Texture2D Icon
-    {
-        get
+        public Texture2D Icon
         {
-            return icon;
+            get
+            {
+                return icon;
+            }
         }
-    }
 
-    public int Cost
-    {
-        get
+        public int Cost
         {
-            return cost;
+            get
+            {
+                return cost;
+            }
         }
-    }
 
-    public int Value
-    {
-        get
+        public int Value
         {
-            return value;
+            get
+            {
+                return value;
+            }
         }
-    }
 
-    public List<Item> Ingredients
-    {
-        get
+        public List<Item> Ingredients
         {
-            return ingredients;
+            get
+            {
+                return ingredients;
+            }
         }
-    }
 
-    public float Weight
-    {
-        get
+        public float Weight
         {
-            return weight;
+            get
+            {
+                return weight;
+            }
         }
-    }
 
-    public Mesh ItemMesh
-    {
-        get
+        public Mesh ItemMesh
         {
-            return itemMesh;
+            get
+            {
+                return itemMesh;
+            }
         }
-    }
 
-    public Rarity Rarity
-    {
-        get
+        public Rarity Rarity
         {
-            return rarity;
+            get
+            {
+                return rarity;
+            }
         }
     }
 }

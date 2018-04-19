@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-public class Equipement : Item
+namespace Snappydue.UnityBundle
 {
-
-    [SerializeField]
-    private int durability;
-
-    public int Durability
+    public class Equipement : Item
     {
-        get
+
+        [SerializeField]
+        private int durability;
+
+        public int Durability
         {
-            return durability;
+            get
+            {
+                return durability;
+            }
         }
     }
 }

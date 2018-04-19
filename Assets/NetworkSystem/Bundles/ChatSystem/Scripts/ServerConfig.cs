@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-[CreateAssetMenu(fileName = "Data", menuName = "Server/Config", order = 1)]
-public class ServerConfig : ScriptableObject
+namespace Snappydue.UnityBundle
 {
-    public string serverUrl = "http://localhost/";
+    [CreateAssetMenu(fileName = "Data", menuName = "Server/Config", order = 1)]
+    public class ServerConfig : ScriptableObject
+    {
+        public string serverUrl = "http://localhost/";
+    }
 }

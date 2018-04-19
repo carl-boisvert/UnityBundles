@@ -2,42 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Snappydue.UnityBundle;
 
-
-public static partial class EventDelegate
+namespace Snappydue.UnityBundle
 {
-    public delegate void DeathHandler();
-    public static event DeathHandler DeathEvent;
-    public static void OnDeathEvent()
+    public static partial class EventDelegate
     {
-        if (DeathEvent != null)
+        public delegate void DeathHandler();
+        public static event DeathHandler DeathEvent;
+        public static void OnDeathEvent()
         {
-            DeathEvent();
+            if (DeathEvent != null)
+            {
+                DeathEvent();
+            }
         }
     }
-}
 
-[RequireComponent(typeof(RawImage))]
-public class HealthBarController : ProgressBarController {
-
-    private void Start()
+    [RequireComponent(typeof(RawImage))]
+    public class HealthBarController : ProgressBarController
     {
-        ui = GetComponent<RawImage>();
-    }
 
-    private void OnEnable()
-    {
-        EventDelegate.AttackEvent += OnAttackEvent;
-    }
+        private void Start()
+        {
+            ui = GetComponent<RawImage>();
+        }
 
-    private void OnDisable()
-    {
-        EventDelegate.AttackEvent -= OnAttackEvent;
-    }
+        private void OnEnable()
+        {
+            EventDelegate.AttackEvent += OnAttackEvent;
+        }
 
-    void OnAttackEvent(int attack, string status)
-    {
-        currentValue -= attack;
-        UpdateUi();
+        private void OnDisable()
+        {
+            EventDelegate.AttackEvent -= OnAttackEvent;
+        }
+
+        void OnAttackEvent(int attack, string status)
+        {
+            currentValue -= attack;
+            UpdateUi();
+        }
     }
 }

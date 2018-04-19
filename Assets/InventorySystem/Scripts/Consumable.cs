@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-public class Consumable : Item
+namespace Snappydue.UnityBundle
 {
+    public class Consumable : Item
+    {
 
-    [SerializeField]
-    private int quantity;
+        [SerializeField]
+        private int quantity;
+    }
 }

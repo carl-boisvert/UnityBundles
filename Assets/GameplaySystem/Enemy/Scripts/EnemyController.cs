@@ -1,63 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public static partial class EventDelegate
+namespace Snappydue.UnityBundle
 {
-    public delegate void AttackHandler(int attack, string status);
-    public static event AttackHandler AttackEvent;
-    public static void OnAttackEvent(int attack, string status = null)
+
+    public partial class EventDelegate
     {
-        if (AttackEvent != null)
+
+        public delegate void AttackHandler(int attack, string status);
+        public static event AttackHandler AttackEvent;
+        public static void OnAttackEvent(int attack, string status)
         {
-            AttackEvent(attack, status);
+            if (AttackEvent != null)
+            {
+                AttackEvent(attack, status);
+            }
         }
     }
-}
 
-[RequireComponent(typeof(Animator))]
-public class EnemyController : MonoBehaviour {
-
-    [SerializeField]
-    private Enemy enemy;
-    [SerializeField]
-    private GameObject modelRoot;
-    private float lastAttack;
-    private Animator animator;
-
-    public Enemy Enemy
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(AttackController))]
+    public class EnemyController : MonoBehaviour
     {
-        get
+
+        [SerializeField, Tooltip("Enemy data to use")]
+        private Enemy enemy;
+        [SerializeField, Tooltip("The gameobject Model that is a child of this object.")]
+        private GameObject modelRoot;
+        private float lastAttack;
+        private Animator animator;
+        private AttackController attackController;
+
+        public Enemy Enemy
         {
-            return enemy;
+            get
+            {
+                return enemy;
+            }
+
+            set
+            {
+                enemy = value;
+            }
         }
 
-        set
+        // Use this for initialization
+        void Start()
         {
-            enemy = value;
-        }
-    }
-
-    // Use this for initialization
-    void Start () {
-        lastAttack = 0;
-        animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = enemy.AnimatorController;
-        Instantiate(enemy.Prefab, modelRoot.transform);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (lastAttack + Time.deltaTime > enemy.AttackSpeed)
-        {
-            //Attack
-            EventDelegate.OnAttackEvent(enemy.Attack, "");
-            animator.SetTrigger("Attack");
             lastAttack = 0;
+            attackController = GetComponent<AttackController>();
+            attackController.SetAttacks(enemy.AttackList);
+            animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = enemy.AnimatorController;
+            Instantiate(enemy.Prefab, modelRoot.transform);
         }
-        else
+
+        // Update is called once per frame
+        void Update()
         {
-            lastAttack += Time.deltaTime;
+            if (lastAttack + Time.deltaTime > enemy.AttackSpeed)
+            {
+                //Attack
+                EventDelegate.OnAttackEvent(attackController.SelectAttack().Damage, "");
+                animator.SetTrigger("Attack");
+                lastAttack = 0;
+            }
+            else
+            {
+                lastAttack += Time.deltaTime;
+            }
         }
-	}
+    }
 }

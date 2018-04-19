@@ -1,24 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Snappydue.UnityBundle;
 
-public class QuestController : MonoBehaviour {
+namespace Snappydue.UnityBundle
+{
+    public class QuestController : MonoBehaviour
+    {
 
-    private Quest[] quests;
+        private Quest[] quests;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        foreach (Quest quest in quests)
+        // Use this for initialization
+        void Start()
         {
-            foreach (Objective obj in quest.Objectives)
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            foreach (Quest quest in quests)
             {
-                
+                foreach (Objective obj in quest.Objectives)
+                {
+
+                }
             }
         }
-	}
+    }
 }
