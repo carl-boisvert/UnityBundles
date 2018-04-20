@@ -18,7 +18,7 @@ namespace Snappydue.UnityBundle
             }
         }
     }
-    public class ExperienceController : MonoBehaviour
+    public class ExperienceUiController : MonoBehaviour
     {
 
         [SerializeField]

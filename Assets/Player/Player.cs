@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Snappydue.UnityBundle;
-using TMPro;
 
 namespace Snappydue.UnityBundle
 {
@@ -12,7 +11,6 @@ namespace Snappydue.UnityBundle
 
         [SerializeField]
         private string username;
-        private TMP_Settings settings;
         [SerializeField]
         private GameObject body;
 

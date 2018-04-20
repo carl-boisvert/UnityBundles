@@ -22,6 +22,10 @@ namespace Snappydue.UnityBundle
             {
                 return objectives;
             }
+            set
+            {
+                objectives = value;
+            }
         }
 
         public string QuestName
@@ -30,6 +34,10 @@ namespace Snappydue.UnityBundle
             {
                 return questName;
             }
+            set
+            {
+                questName = value;
+            }
         }
 
         public Quest[] MustBeDone
@@ -37,6 +45,10 @@ namespace Snappydue.UnityBundle
             get
             {
                 return mustBeDone;
+            }
+            set
+            {
+                mustBeDone = value;
             }
         }
     }

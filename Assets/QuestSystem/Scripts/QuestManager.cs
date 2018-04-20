@@ -17,18 +17,43 @@ namespace Snappydue.UnityBundle
                 QuestFinishedEvent(quest);
             }
         }
+
+
+        public delegate void NewQuestHandler(Quest quest);
+        public static event NewQuestHandler NewQuestEvent;
+        public static void OnNewQuestEvent(Quest quest)
+        {
+            if (NewQuestEvent != null)
+            {
+                NewQuestEvent(quest);
+            }
+        }
     }
 
     public class QuestManager : MonoBehaviour
     {
 
-        private Quest[] currentQuest;
-        private Quest[] doneQuests;
+        private List<Quest> currentQuest;
+        private List<Quest> doneQuests;
 
         // Use this for initialization
         void Start()
         {
+            currentQuest = new List<Quest>();
+            doneQuests = new List<Quest>();
+            Quest quest = new Quest();
+            quest.QuestName = "Kill Jenkins";
+            EventDelegate.OnNewQuestEvent(quest);
+        }
 
+        private void OnEnable()
+        {
+            EventDelegate.NewQuestEvent += AddQuest;
+        }
+
+        private void OnDisable()
+        {
+            EventDelegate.NewQuestEvent -= AddQuest;
         }
 
         // Update is called once per frame
@@ -49,6 +74,11 @@ namespace Snappydue.UnityBundle
                 {
                 }
             }
+        }
+
+
+        void AddQuest(Quest quest)
+        {
 
         }
     }

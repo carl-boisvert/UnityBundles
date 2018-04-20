@@ -20,7 +20,7 @@ namespace Snappydue.UnityBundle
     }
 
     [RequireComponent(typeof(RawImage))]
-    public class HealthBarController : ProgressBarController
+    public class HealthBarUiController : ProgressBarController
     {
 
         private void Start()
