@@ -24,6 +24,8 @@ namespace Snappydue.UnityBundle
         protected AnimatorOverrideController animatorController;
         [SerializeField]
         protected GameObject prefab;
+        [TagSelector]
+        public string[] distractedBy;
 
         protected int baseSpeed = 100;
 
