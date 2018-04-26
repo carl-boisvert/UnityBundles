@@ -30,6 +30,7 @@ namespace Snappydue.UnityBundle
         private Animator animator;
         private AttackController attackController;
         private Transform target;
+        private SpawnPointController spawnPoint;
 
         public Enemy Enemy
         {
@@ -44,6 +45,19 @@ namespace Snappydue.UnityBundle
             }
         }
 
+        public SpawnPointController SpawnPoint
+        {
+            get
+            {
+                return spawnPoint;
+            }
+
+            set
+            {
+                spawnPoint = value;
+            }
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -54,6 +68,7 @@ namespace Snappydue.UnityBundle
             animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = enemy.AnimatorController;
             Instantiate(enemy.Prefab, modelRoot.transform);
+            InitCheckpoints();
         }
 
         // Update is called once per frame
@@ -75,6 +90,19 @@ namespace Snappydue.UnityBundle
                     lastAttack += Time.deltaTime;
                 }
             }
+        }
+
+        private void InitCheckpoints()
+        {
+            PatrolBehavior patrol = animator.GetBehaviour<PatrolBehavior>();
+            if (patrol)
+            {
+                patrol.Checkpoints = spawnPoint.Checkpoints;
+            }
+            else
+            {
+                Debug.Log("Can't find the PatrolBehavior");
+            }   
         }
 
 		private void OnDrawGizmosSelected()
