@@ -12,16 +12,25 @@ namespace Snappydue.UnityBundle
         [SerializeField]
         private Enemy[] enemyPool;
         [SerializeField]
-        private GameObject[] spawnPoints;
+        private SpawnPointController[] spawnPoints;
+        private BoxCollider trigger;
 
-        void SpawnEnemy()
+		private void Start()
+		{
+            trigger = GetComponent<BoxCollider>();
+		}
+
+        void SpawnEnemy(SpawnPointController spawn)
         {
-            int index = Random.Range(0, spawnPoints.Length);
-            int indexEnemy = Random.Range(0, enemyPool.Length);
-            Debug.Log("Spawning: " + enemyPool[indexEnemy].Name);
-            EnemyController enemyCtrl = enemyPrefabs.GetComponent<EnemyController>();
-            enemyCtrl.Enemy = enemyPool[indexEnemy];
-            Instantiate(enemyPrefabs, spawnPoints[index].transform);
+            for (int i = 0; i < spawn.MaxNumberOfCreature; i++)
+            {
+                int indexEnemy = Random.Range(0, enemyPool.Length);
+                Debug.Log("Spawning: " + enemyPool[indexEnemy].Name);
+                EnemyController enemyCtrl = enemyPrefabs.GetComponent<EnemyController>();
+                enemyCtrl.Enemy = enemyPool[indexEnemy];
+                Instantiate(enemyPrefabs, spawn.transform);
+                spawn.CurrentNumberOfCreature++;
+            }
         }
 
         void OnTriggerEnter(Collider other)
@@ -29,14 +38,17 @@ namespace Snappydue.UnityBundle
             Debug.Log("Enter");
             for (int i = 0; i <= spawnPoints.Length - 1; i++)
             {
-                SpawnEnemy();
+                if(spawnPoints[i].HasPlaceAvaillable())
+                {
+                    SpawnEnemy(spawnPoints[i]);
+                }
             }
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(this.transform.position, this.transform.localScale);
+            Gizmos.DrawWireCube(this.transform.position, trigger.transform.localScale);
         }
     }
 }

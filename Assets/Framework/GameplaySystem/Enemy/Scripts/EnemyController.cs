@@ -29,6 +29,7 @@ namespace Snappydue.UnityBundle
         private float lastAttack;
         private Animator animator;
         private AttackController attackController;
+        private Transform target;
 
         public Enemy Enemy
         {
@@ -46,6 +47,7 @@ namespace Snappydue.UnityBundle
         // Use this for initialization
         void Start()
         {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
             lastAttack = 0;
             attackController = GetComponent<AttackController>();
             attackController.SetAttacks(enemy.AttackList);
@@ -57,22 +59,27 @@ namespace Snappydue.UnityBundle
         // Update is called once per frame
         void Update()
         {
-            if (lastAttack + Time.deltaTime > enemy.AttackSpeed)
+            float distance = Vector3.Distance(this.transform.position, target.position);
+
+            if(distance <= enemy.DistractionRadius)
             {
-                //Attack
-                EventDelegate.OnAttackEvent(attackController.SelectAttack().Damage, "");
-                animator.SetTrigger("Attack");
-                lastAttack = 0;
-            }
-            else
-            {
-                lastAttack += Time.deltaTime;
+                if (lastAttack + Time.deltaTime > enemy.AttackSpeed)
+                {
+                    //Attack
+                    EventDelegate.OnAttackEvent(attackController.SelectAttack().Damage, "");
+                    animator.SetTrigger("Attack");
+                    lastAttack = 0;
+                }
+                else
+                {
+                    lastAttack += Time.deltaTime;
+                }
             }
         }
 
-		private void OnDrawGizmos()
+		private void OnDrawGizmosSelected()
 		{
-            Gizmos.color = Color.blue;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(this.transform.position, enemy.DistractionRadius);
 		}
 	}

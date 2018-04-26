@@ -22,4 +22,4 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: 390a82c5b22b4c4499032a3de6250499, type: 2}
   prefab: {fileID: 1116201724273134, guid: 2abc987989c54ae4aa2d5e4d0a8e4a73, type: 2}
   distractedBy: []
-  distractionRadius: 2
+  distractionRadius: 5
