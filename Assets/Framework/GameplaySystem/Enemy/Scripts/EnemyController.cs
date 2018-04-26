@@ -69,5 +69,11 @@ namespace Snappydue.UnityBundle
                 lastAttack += Time.deltaTime;
             }
         }
-    }
+
+		private void OnDrawGizmos()
+		{
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(this.transform.position, enemy.DistractionRadius);
+		}
+	}
 }

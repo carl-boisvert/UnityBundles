@@ -26,6 +26,8 @@ namespace Snappydue.UnityBundle
         protected GameObject prefab;
         [TagSelector]
         public string[] distractedBy;
+        [SerializeField]
+        protected float distractionRadius;
 
         protected int baseSpeed = 100;
 
@@ -124,6 +126,14 @@ namespace Snappydue.UnityBundle
             get
             {
                 return attackList;
+            }
+        }
+
+        public float DistractionRadius
+        {
+            get
+            {
+                return distractionRadius;
             }
         }
     }

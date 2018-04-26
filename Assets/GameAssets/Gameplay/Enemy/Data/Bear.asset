@@ -23,3 +23,4 @@ MonoBehaviour:
   prefab: {fileID: 1052791461614782, guid: f87a1ea43c1520d4e938ead1e1ec236c, type: 2}
   distractedBy:
   - 
+  distractionRadius: 1
