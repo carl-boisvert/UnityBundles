@@ -11,13 +11,13 @@ namespace Snappydue.UnityBundle
         private GameObject enemyPrefabs;
         [SerializeField]
         private Enemy[] enemyPool;
-        [SerializeField]
         private SpawnPointController[] spawnPoints;
         private BoxCollider trigger;
 
 		private void Start()
 		{
             trigger = GetComponent<BoxCollider>();
+            spawnPoints = GetComponentsInChildren<SpawnPointController>();
 		}
 
         void SpawnEnemy(SpawnPointController spawn)
