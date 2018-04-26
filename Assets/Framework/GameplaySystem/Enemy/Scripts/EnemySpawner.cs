@@ -8,7 +8,7 @@ namespace Snappydue.UnityBundle
     {
 
         [SerializeField]
-        private GameObject enemyPrefabs;
+        private GameObject enemyPrefab;
         [SerializeField]
         private Enemy[] enemyPool;
         private SpawnPointController[] spawnPoints;
@@ -26,9 +26,22 @@ namespace Snappydue.UnityBundle
             {
                 int indexEnemy = Random.Range(0, enemyPool.Length);
                 Debug.Log("Spawning: " + enemyPool[indexEnemy].Name);
-                EnemyController enemyCtrl = enemyPrefabs.GetComponent<EnemyController>();
+                EnemyController enemyCtrl = enemyPrefab.GetComponent<EnemyController>();
+
                 enemyCtrl.Enemy = enemyPool[indexEnemy];
-                Instantiate(enemyPrefabs, spawn.transform);
+                GameObject enemy = Instantiate(enemyPrefab, spawn.transform);
+                Animator anim = enemy.GetComponent<Animator>();
+
+                PatrolBehavior patrol = anim.GetBehaviour<PatrolBehavior>();
+                Debug.Log(patrol);
+                if (patrol)
+                {
+                    patrol.Checkpoints = spawn.Checkpoints;
+                }
+                else
+                {
+                    Debug.Log("Can't find the PatrolBehavior");
+                }
                 spawn.CurrentNumberOfCreature++;
             }
         }

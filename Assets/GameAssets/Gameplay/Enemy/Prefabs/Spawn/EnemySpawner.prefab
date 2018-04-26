@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cdcb078f40b42d6a4a5657c7b44159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumberOfCreature: 0
+  maxNumberOfCreature: 1
+  gizmosSize: 1
 --- !u!114 &114315763027775720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6288ca1a84c481d4cb8c96e7912b89c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs: {fileID: 1905045775777478, guid: 2779bfa9fe1ce634cbb462b58a4fe322,
+  enemyPrefab: {fileID: 1905045775777478, guid: 2779bfa9fe1ce634cbb462b58a4fe322,
     type: 2}
   enemyPool: []
 --- !u!114 &114890064211972474

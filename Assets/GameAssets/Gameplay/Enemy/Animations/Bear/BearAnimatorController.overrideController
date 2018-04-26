@@ -8,7 +8,9 @@ AnimatorOverrideController:
   m_Name: BearAnimatorController
   m_Controller: {fileID: 9100000, guid: 1b19df5ab074dc9458c64178a4a3a45d, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: def2b8a98e6e701498f6d4b1a3d44d1b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8d5dbb16d32c645b5bee541caaa0704a, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f22d8fda93ebf3a469d3d09342167930, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 13aac2ba51a044549a32e03b35929d46, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e87d3acef536742a981844a57089d20c, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 81e48c781410e6d489fa48b10f354512, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0abe227db48d647dc95a14a6eddd4243, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e7a6ff6477d4547d7ab20b207e132372, type: 2}

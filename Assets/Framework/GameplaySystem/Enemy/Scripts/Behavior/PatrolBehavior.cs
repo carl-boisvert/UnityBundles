@@ -8,11 +8,29 @@ namespace Snappydue.UnityBundle
     public class PatrolBehavior : StateMachineBehaviour
     {
         [SerializeField]
-        private List<GameObject> checkpoints;
+        private CheckpointController[] checkpoints;
+
+        public CheckpointController[] Checkpoints
+        {
+            get
+            {
+                return checkpoints;
+            }
+
+            set
+            {
+                checkpoints = value;
+            }
+        }
+
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-
+            Debug.Log(checkpoints.Length);
+            foreach(CheckpointController checkpoint in checkpoints)
+            {
+                Debug.Log("Checkpoint: " + checkpoint.name);
+            }
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
