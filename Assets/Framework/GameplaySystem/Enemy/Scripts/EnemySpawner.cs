@@ -35,7 +35,6 @@ namespace Snappydue.UnityBundle
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Enter");
             for (int i = 0; i <= spawnPoints.Length - 1; i++)
             {
                 if(spawnPoints[i].HasPlaceAvaillable())

@@ -76,7 +76,7 @@ namespace Snappydue.UnityBundle
         {
             float distance = Vector3.Distance(this.transform.position, target.position);
 
-            if(distance <= enemy.DistractionRadius)
+            if (distance <= enemy.DistractionRadius)
             {
                 if (lastAttack + Time.deltaTime > enemy.AttackSpeed)
                 {

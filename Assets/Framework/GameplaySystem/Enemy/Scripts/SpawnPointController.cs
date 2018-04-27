@@ -15,7 +15,6 @@ public class SpawnPointController : MonoBehaviour{
 	{
         currentNumberOfCreature = 0;
         checkpoints = GetComponentsInChildren<CheckpointController>();
-        Debug.Log(checkpoints.Length);
 	}
 
 	public int MaxNumberOfCreature

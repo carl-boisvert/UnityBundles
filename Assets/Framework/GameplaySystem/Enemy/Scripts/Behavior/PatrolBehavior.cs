@@ -9,6 +9,8 @@ namespace Snappydue.UnityBundle
     {
         [SerializeField]
         private CheckpointController[] checkpoints;
+        [SerializeField]
+        private int stopRadius = 5;
         private int currentCheckpointIndex = 0;
 
         public CheckpointController[] Checkpoints
@@ -32,19 +34,12 @@ namespace Snappydue.UnityBundle
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-
-        }
-
-        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-        //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //
-        //}
-
-        // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
-        override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-            if (animator.gameObject.transform.position != checkpoints[currentCheckpointIndex].transform.position)
-            {  
-                animator.gameObject.transform.position = Vector3.MoveTowards(animator.gameObject.transform.position, checkpoints[currentCheckpointIndex].transform.position, 5);
+            float distance = Vector3.Distance(animator.gameObject.transform.position, checkpoints[currentCheckpointIndex].transform.position);
+            if (distance > stopRadius)
+            {
+                Vector3 newPosition = Vector3.MoveTowards(animator.gameObject.transform.position, checkpoints[currentCheckpointIndex].transform.position, 100 * Time.deltaTime);
+                Debug.Log("Current position: "+ animator.gameObject.transform.position.ToString() + " Moving to: " + newPosition.ToString() + " or " + checkpoints[currentCheckpointIndex].name);
+                animator.gameObject.transform.position = newPosition;
             }
             else
             {
@@ -57,6 +52,16 @@ namespace Snappydue.UnityBundle
                     currentCheckpointIndex = 0;
                 }
             }
+        }
+
+        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+        //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        //
+        //}
+
+        // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
+        override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+           
         }
 
         // OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
